@@ -6,13 +6,23 @@
 # Example row format (replace with your actual holdings):
 # {"holding": "Example bond", "issuer": "Example Co", "business_days_to_redeem": 2,
 #  "reserve_eligible": True, "issuer_type": "company"}
-HOLDINGS = []
+# Course reserve eligibility; settlement days below are training assumptions.
+# Original Lab 13 holdings and A-C allocations were absent from this file.
+HOLDINGS = [
+    {"holding": "Bills", "issuer": "US Treasury", "business_days_to_redeem": 1,
+     "reserve_eligible": True, "issuer_type": "us_treasury"},
+    {"holding": "10-year note", "issuer": "US Treasury", "business_days_to_redeem": 1,
+     "reserve_eligible": True, "issuer_type": "us_treasury"},
+    {"holding": "Investment-grade bond fund", "issuer": "IG fund", "business_days_to_redeem": 2,
+     "reserve_eligible": False, "issuer_type": "diversified_fund"},
+    {"holding": "Global equity index fund", "issuer": "Equity fund", "business_days_to_redeem": 2,
+     "reserve_eligible": False, "issuer_type": "diversified_fund"},
+]
 
 # Percent weights, keyed by holding name. Include every holding, even at zero.
 CANDIDATES = {
-    "A": {},
-    "B": {},
-    "C": {},
+    "E": {"Bills": 0, "10-year note": 0,
+          "Investment-grade bond fund": 40, "Global equity index fund": 60},
 }
 RESERVE_SIZE = 100  # USD millions
 QUARTERLY_DISTRIBUTION = 0.75  # USD millions
@@ -94,7 +104,7 @@ def main():
         ]
         print(f"\nCandidate {candidate}")
         for label, value, passed in checks:
-            print(f"  {label}: {value:.1f}% — {'pass' if passed else 'FAIL'}")
+            print(f"  {label}: {value:.1f}% -- {'pass' if passed else 'FAIL'}")
         print("  Calendar-year loss rule: requires CIO clarification")
         failures = sum(not passed for _, _, passed in checks)
         print("  passes every checkable rule" if failures == 0
