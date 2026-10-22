@@ -29,10 +29,10 @@ def finite_number(value):
     return isinstance(value, (int, float)) and not isinstance(value, bool) and math.isfinite(value)
 
 
-def validate_inputs(sleeves, correlations, objective):
+def validate_inputs(sleeves, correlations, objective, require_four=True):
     n = len(sleeves)
-    if not 3 <= n <= 6:
-        raise ValueError("Three to six assets are required.")
+    if require_four and n != 4:
+        raise ValueError("Exactly four sleeves are required, in the documented order.")
     for sleeve in sleeves:
         if not finite_number(sleeve["expected_return"]):
             raise ValueError(f"Enter a finite expected return for {sleeve['name']}.")
@@ -41,7 +41,7 @@ def validate_inputs(sleeves, correlations, objective):
     if not finite_number(objective):
         raise ValueError("Objective return must be finite.")
     if len(correlations) != n or any(len(row) != n for row in correlations):
-        raise ValueError("Correlation table dimensions must match the assets.")
+        raise ValueError("Correlation table must have one row and column per sleeve.")
     for i in range(n):
         for j in range(n):
             value = correlations[i][j]
@@ -107,78 +107,79 @@ def meets_objective(portfolio_return, objective):
     return portfolio_return >= objective
 
 
-def search(sleeves, correlations, objective, reserve_eligible, reserve_minimum):
-    """Search every fully invested long-only mix in five percentage-point steps.
+def search_portfolio(sleeves, correlations, objective, reserve_minimum, reserve_eligible):
+    """Exhaust every long-only 5-percentage-point mix; return best or None.
 
-    Inputs and results use annual decimals. Ties retain the first enumerated mix.
-    Return None when the objective and reserve rule cannot both be met.
+    Eligibility is a sequence of booleans in sleeve order. Ties retain the
+    first mix visited. All rates and weights are decimals.
     """
-    validate_inputs(sleeves, correlations, objective)
-    if len(reserve_eligible) != len(sleeves) or any(type(x) is not bool for x in reserve_eligible):
-        raise ValueError("Choose reserve eligibility for every asset.")
+    validate_inputs(sleeves, correlations, objective, require_four=False)
+    n = len(sleeves)
+    if not n or len(reserve_eligible) != n:
+        raise ValueError("Provide one reserve eligibility flag per asset.")
     if not finite_number(reserve_minimum) or not 0 <= reserve_minimum <= 1:
-        raise ValueError("Reserve minimum must be from zero to one.")
-    returns = [s["expected_return"] for s in sleeves]
-    covariance = covariance_matrix([s["volatility"] for s in sleeves], correlations)
-
-    def mixes(remaining, count):
-        if count == 1:
-            yield [remaining / 20]
-        else:
-            for units in range(remaining + 1):
-                for tail in mixes(remaining - units, count - 1):
-                    yield [units / 20] + tail
-
+        raise ValueError("Reserve minimum must be between 0 and 1.")
+    returns = [s['expected_return'] for s in sleeves]
+    covariance = covariance_matrix([s['volatility'] for s in sleeves], correlations)
     best = None
-    for weights in mixes(20, len(sleeves)):
+
+    def visit(prefix, remaining):
+        nonlocal best
+        if len(prefix) < n - 1:
+            for units in range(remaining + 1):
+                visit(prefix + [units], remaining - units)
+            return
+        weights = [units / 20 for units in prefix + [remaining]]
         result = expected_return(weights, returns)
         reserve = sum(w for w, eligible in zip(weights, reserve_eligible) if eligible)
         if result + 1e-12 < objective or reserve + 1e-12 < reserve_minimum:
-            continue
-        risk = portfolio_volatility(weights, covariance)
-        if best is None or risk < best["volatility"] - 1e-12:
+            return
+        volatility = portfolio_volatility(weights, covariance)
+        if best is None or volatility < best['volatility']:
             best = dict(weights=weights, expected_return=result,
-                        volatility=risk, reserve_weight=reserve)
+                        volatility=volatility, reserve_eligible_weight=reserve)
+
+    visit([], 20)
     return best
 
 
-def estimate_from_csv(source, last_36=False):
-    """Historical arithmetic mean × 12; sample monthly std × sqrt(12).
+def search(sleeves, correlations, objective, reserve_eligible, reserve_minimum):
+    """Compatibility entry point for the existing Lab 15 search tests."""
+    result = search_portfolio(sleeves, correlations, objective, reserve_minimum, reserve_eligible)
+    if result is not None:
+        result = dict(result, reserve_weight=result['reserve_eligible_weight'])
+    return result
 
-    Use complete common observations, without filling or silently dropping data.
-    Last 36 means 36 returns, requiring at least 37 monthly prices.
+
+def estimate_from_csv(source, last_36_months=False):
+    """Read monthly prices (date, then tickers); return sleeves, correlations.
+
+    Use sample standard deviations and arithmetic mean monthly returns.
+    The window is applied to returns, so 36 returns require 37 prices.
     """
     import pandas as pd
 
-    frame = pd.read_csv(source)
-    if not 4 <= len(frame.columns) <= 7 or frame.columns.duplicated().any():
-        raise ValueError("CSV needs a date column and three to six unique ticker columns.")
-    dates = pd.to_datetime(frame.iloc[:, 0], errors="raise")
-    months = dates.dt.to_period("M")
-    if dates.isna().any() or months.duplicated().any() or not dates.is_monotonic_increasing:
-        raise ValueError("Dates must be unique months, oldest first.")
-    if len(dates) < 3 or any(b.ordinal - a.ordinal != 1 for a, b in zip(months, months[1:])):
-        raise ValueError("Prices must cover consecutive months with at least three rows.")
-    prices = frame.iloc[:, 1:].apply(pd.to_numeric, errors="raise")
-    if prices.isna().any().any() or not all(
-            math.isfinite(float(x)) and x > 0 for x in prices.to_numpy().flat):
-        raise ValueError("Every price must be positive and finite; no missing prices.")
-    monthly = prices.pct_change(fill_method=None).iloc[1:]
-    if last_36:
-        if len(monthly) < 36:
-            raise ValueError("Last 36 months needs at least 37 monthly price rows.")
-        monthly = monthly.tail(36)
-    means = monthly.mean() * 12
-    vols = monthly.std(ddof=1) * math.sqrt(12)
-    correlations = monthly.corr().to_numpy().tolist()
-    # Remove harmless floating-point asymmetry in computed correlations.
-    for i in range(len(vols)):
-        correlations[i][i] = 1.0
-        for j in range(i):
-            correlations[i][j] = correlations[j][i]
-    sleeves = [dict(name=str(name), expected_return=float(means[name]),
-                    volatility=float(vols[name])) for name in prices.columns]
-    validate_inputs(sleeves, correlations, 0.0)
+    prices = pd.read_csv(source)
+    if prices.shape[1] < 2 or len(prices) < 3:
+        raise ValueError("CSV needs a date column, at least one ticker, and at least three price rows.")
+    dates = pd.to_datetime(prices.iloc[:, 0], errors='raise')
+    months = dates.dt.to_period('M')
+    if dates.isna().any() or months.duplicated().any() or not months.is_monotonic_increasing:
+        raise ValueError("Dates must be oldest first, with one row per month.")
+    if any(b.ordinal - a.ordinal != 1 for a, b in zip(months, months[1:])):
+        raise ValueError("Prices must cover consecutive months without gaps.")
+    values = prices.iloc[:, 1:].apply(pd.to_numeric, errors='raise')
+    if values.isna().any().any() or not all(math.isfinite(float(v)) and v > 0 for v in values.to_numpy().flat):
+        raise ValueError("All prices must be positive finite numbers without missing values.")
+    returns = values.pct_change(fill_method=None).iloc[1:]
+    if last_36_months:
+        returns = returns.tail(36)
+    means = returns.mean() * 12
+    volatilities = returns.std(ddof=1) * math.sqrt(12)
+    sleeves = [dict(name=str(ticker), expected_return=float(means[ticker]),
+                    volatility=float(volatilities[ticker])) for ticker in values.columns]
+    correlations = returns.corr().values.tolist()
+    validate_inputs(sleeves, correlations, 0.0, require_four=False)
     return sleeves, correlations
 
 
@@ -210,4 +211,3 @@ if __name__ == "__main__":
         main()
     except ValueError as error:
         raise SystemExit(f"Input error: {error}")
-
