@@ -1,3 +1,4 @@
+#web browser verion runs at  http://localhost:8501#
 """Run with: python -m streamlit run app.py"""
 from copy import deepcopy
 from io import BytesIO
