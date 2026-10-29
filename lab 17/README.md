@@ -8,7 +8,8 @@ From the repository root, in a terminal with internet access:
 
 ```powershell
 python -m pip install -r "lab 17/requirements.txt"
-python -m streamlit run "lab 17/asof_app.py"
+$env:FRED_API_KEY = "your_personal_fred_api_key"
+python -m streamlit run "lab 17/asof_app.py" --browser.gatherUsageStats false
 ```
 
 Run the live known-answer audit separately:
@@ -59,7 +60,7 @@ Example response if publication date is challenged (preparation only, not a clai
 
 ## Explain the code and learning notes
 
-In `fetch_asof`, the cache decorator reuses identical series/date/day requests for up to an hour. `validate_id` restricts and normalizes the ID. `date.fromisoformat` parses the requested vintage and the future-date guard rejects an impossible cutoff. `download` sends exactly one request to ALFRED with `id` and `vintage_date`, checks HTTP errors, parses the CSV, and saves URL and retrieval time. The last filter excludes measurements after the cutoff as a sanity check. It does not create the vintage: ALFRED's historical response does that. Returning the snapshot preserves both values and provenance. The current download uses the separate FRED endpoint, so revisions can be observed.
+`fetch_snapshot` requests FRED observations with `realtime_start` and `realtime_end` both set to the requested information date. It checks that the response confirms this period, follows pagination, rejects measurements beyond the cutoff, and records the UTC retrieval time and a credential-free request URL. Current data uses the same endpoint with today’s information date. Missing values are excluded; duplicate or missing dates and infinite values are rejected. Metadata (units, frequency and seasonal adjustment) is current, not historical. Charts overlay both histories; exported differences include revisions, later observations, older additions and historical dates absent today. With an empty historical baseline, current-only dates are counted separately rather than assumed to be later publications.
 
 A data card states meaning and availability: source, ID, units, measurement period, publication lag, revisions, vintage, and download time. The vintage and decision-date availability rule prevent leakage before a signal is computed; the download date alone cannot. “Cleaned the data” describes an operation but does not establish what a number meant or when it became knowable.
 
@@ -74,3 +75,18 @@ Student's own reflection, no-screen code explanation, partner swap, and Brightsp
 - [Offline leakage and interface tests](test_asof.py)
 - [Dependencies](requirements.txt)
 - This Markdown file contains the provisional card, call, and remaining student work.
+
+## Reopening, sharing, and credentials
+
+On Windows, double-click `launch_asof.cmd` in this folder, or run the Streamlit command above. Leave the terminal running, then bookmark http://localhost:8501. Connection refused means the server has stopped or is listening on a different port. The localhost address works only on the machine running the app. Other computers need the terminal’s Network URL on an allowed local network, or a hosted deployment.
+
+Alternatively store your key in `.streamlit/secrets.toml` under the directory from which you launch Streamlit:
+
+```toml
+FRED_API_KEY = "your_personal_fred_api_key"
+```
+
+Never commit that secrets file. The supplied `.gitignore` excludes it. Source request URLs intentionally omit API keys. For a hosted deployment, set the key in the hosting service’s secrets settings; uploading files to GitHub alone does not host a Streamlit app. FRED supplies data but does not host this application.
+
+If all series fail, read the displayed network or HTTP error. The assistant’s restricted execution session could not reach FRED; launch from your own terminal with internet access. Live data and known-answer checks remain unverified until `audit.py` succeeds. Offline tests are synthetic and do not establish historical accuracy.
+

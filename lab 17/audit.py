@@ -2,10 +2,20 @@
 import json
 from datetime import date, timedelta
 from pathlib import Path
-from asof_app import fetch_today, fetch_asof, compare
+from asof_app import fetch_snapshot, get_api_key, compare
+
+
+def fetch_today(series_id, day):
+    return fetch_snapshot(series_id, day, day, get_api_key())
+
+
+def fetch_asof(series_id, cutoff, day):
+    return fetch_snapshot(series_id, cutoff, day, get_api_key())
 
 
 def main():
+    if not get_api_key():
+        raise SystemExit("Set FRED_API_KEY in the environment or Streamlit secrets before running the live audit.")
     day = date.today().isoformat()
     expected = {"BAA": ("2026-09-01", 6.47), "FEDFUNDS": ("2026-09-01", 3.75),
                 "DGS10": ("2026-10-02", 5.28), "MORTGAGE30US": ("2026-10-01", 7.28)}
@@ -18,7 +28,8 @@ def main():
             report["checks"].append({"series": sid, "passed": bool(passed),
                 "actual_date": str(actual.index[-1].date()) if not actual.empty else None,
                 "actual_value": float(actual.iloc[-1]) if not actual.empty else None,
-                "url": known["url"]})
+                "url": known["url"], "requested_cutoff": known["requested_cutoff"],
+                "downloaded_utc": known["downloaded_utc"]})
         except Exception as error:
             report["checks"].append({"series": sid, "passed": False, "error": str(error)})
     try:
@@ -51,3 +62,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
