@@ -1,5 +1,3 @@
 __pycache__/
 output/*_companyfacts.json
-output/*.json
-output/*_report.txt
 output/*_decision.md

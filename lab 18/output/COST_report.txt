@@ -1,0 +1,41 @@
+COST | COSTCO WHOLESALE CORP /NEW
+Data: SEC EDGAR. Amounts in USD millions; ROE in percent.
+Fiscal year end | Metric | Value | XBRL tag / derivation
+2022-08-28 | revenue | 226,954 (USD 226,954,000,000) | us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax
+2022-08-28 | net_income | 5,844 (USD 5,844,000,000) | us-gaap:NetIncomeLoss
+2022-08-28 | operating_cash_flow | 7,392 (USD 7,392,000,000) | us-gaap:NetCashProvidedByUsedInOperatingActivities
+2022-08-28 | capital_spending | 3,891 (USD 3,891,000,000) | us-gaap:PaymentsToAcquirePropertyPlantAndEquipment
+2022-08-28 | equity | 20,642 (USD 20,642,000,000) | us-gaap:StockholdersEquity
+2022-08-28 | roe_percent | 28.3 | derived: NetIncomeLoss / StockholdersEquity * 100
+2022-08-28 | owner_earnings | 3,501 (USD 3,501,000,000) | derived: us-gaap:NetCashProvidedByUsedInOperatingActivities - us-gaap:PaymentsToAcquirePropertyPlantAndEquipment
+2023-09-03 | revenue | 242,290 (USD 242,290,000,000) | us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax
+2023-09-03 | net_income | 6,292 (USD 6,292,000,000) | us-gaap:NetIncomeLoss
+2023-09-03 | operating_cash_flow | 11,068 (USD 11,068,000,000) | us-gaap:NetCashProvidedByUsedInOperatingActivities
+2023-09-03 | capital_spending | 4,323 (USD 4,323,000,000) | us-gaap:PaymentsToAcquirePropertyPlantAndEquipment
+2023-09-03 | equity | 25,058 (USD 25,058,000,000) | us-gaap:StockholdersEquity
+2023-09-03 | roe_percent | 25.1 | derived: NetIncomeLoss / StockholdersEquity * 100
+2023-09-03 | owner_earnings | 6,745 (USD 6,745,000,000) | derived: us-gaap:NetCashProvidedByUsedInOperatingActivities - us-gaap:PaymentsToAcquirePropertyPlantAndEquipment
+2024-09-01 | revenue | 254,453 (USD 254,453,000,000) | us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax
+2024-09-01 | net_income | 7,367 (USD 7,367,000,000) | us-gaap:NetIncomeLoss
+2024-09-01 | operating_cash_flow | 11,339 (USD 11,339,000,000) | us-gaap:NetCashProvidedByUsedInOperatingActivities
+2024-09-01 | capital_spending | 4,710 (USD 4,710,000,000) | us-gaap:PaymentsToAcquirePropertyPlantAndEquipment
+2024-09-01 | equity | 23,622 (USD 23,622,000,000) | us-gaap:StockholdersEquity
+2024-09-01 | roe_percent | 31.2 | derived: NetIncomeLoss / StockholdersEquity * 100
+2024-09-01 | owner_earnings | 6,629 (USD 6,629,000,000) | derived: us-gaap:NetCashProvidedByUsedInOperatingActivities - us-gaap:PaymentsToAcquirePropertyPlantAndEquipment
+2025-08-31 | revenue | 275,235 (USD 275,235,000,000) | us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax
+2025-08-31 | net_income | 8,099 (USD 8,099,000,000) | us-gaap:NetIncomeLoss
+2025-08-31 | operating_cash_flow | 13,335 (USD 13,335,000,000) | us-gaap:NetCashProvidedByUsedInOperatingActivities
+2025-08-31 | capital_spending | 5,498 (USD 5,498,000,000) | us-gaap:PaymentsToAcquirePropertyPlantAndEquipment
+2025-08-31 | equity | 29,164 (USD 29,164,000,000) | us-gaap:StockholdersEquity
+2025-08-31 | roe_percent | 27.8 | derived: NetIncomeLoss / StockholdersEquity * 100
+2025-08-31 | owner_earnings | 7,837 (USD 7,837,000,000) | derived: us-gaap:NetCashProvidedByUsedInOperatingActivities - us-gaap:PaymentsToAcquirePropertyPlantAndEquipment
+2026-08-30 | revenue | 303,154 (USD 303,154,000,000) | us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax
+2026-08-30 | net_income | 9,226 (USD 9,226,000,000) | us-gaap:NetIncomeLoss
+2026-08-30 | operating_cash_flow | 15,817 (USD 15,817,000,000) | us-gaap:NetCashProvidedByUsedInOperatingActivities
+2026-08-30 | capital_spending | 6,435 (USD 6,435,000,000) | us-gaap:PaymentsToAcquirePropertyPlantAndEquipment
+2026-08-30 | equity | 35,803 (USD 35,803,000,000) | us-gaap:StockholdersEquity
+2026-08-30 | roe_percent | 25.8 | derived: NetIncomeLoss / StockholdersEquity * 100
+2026-08-30 | owner_earnings | 9,382 (USD 9,382,000,000) | derived: us-gaap:NetCashProvidedByUsedInOperatingActivities - us-gaap:PaymentsToAcquirePropertyPlantAndEquipment
+ROE >= 15% every year: pass
+Owner earnings positive every year: pass
+Owner earnings grew first to last: pass

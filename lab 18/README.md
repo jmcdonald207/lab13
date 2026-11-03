@@ -14,6 +14,17 @@ python verify_live.py
 python -m streamlit run app.py
 ```
 
+If the browser shows `ERR_CONNECTION_REFUSED`, start Streamlit in a normal PowerShell window and leave that window open:
+
+```powershell
+cd "C:\Users\mcdon\Documents\Walmart-GitHub-Runner\lab 18"
+python -m streamlit run app.py --server.address 127.0.0.1 --server.port 8519
+```
+
+Wait for the startup URL, then open **http://127.0.0.1:8519** (HTTP, not HTTPS). The app must be running for the URL to work; GitHub stores the project but does not host its Streamlit process. If downloads fail only in the app, click **Reload saved reports — no internet needed**.
+
+The verified derived COST/JPM JSON reports, printed reports, memos, and memo hashes are committed under `output`, so a fresh checkout can display them without downloading again. Raw SEC companyfacts responses and personal decision files remain local. Refresh the reports when you want newer filing data, then review the memos again.
+
 Change the contact to your own name and email if you reuse this project. SEC responses and derived reports are saved under `output`. Raw responses remain local and are not included as fabricated sample data. Each derived JSON row records tag, period, filing date, and accession. The text report prints both millions and raw dollars. The app displays the saved snapshot until refreshed.
 
 ## Skill discovery

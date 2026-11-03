@@ -1,0 +1,307 @@
+{
+  "ticker": "JPM",
+  "entity": "JPMORGAN CHASE & CO",
+  "cik": 19617,
+  "rows": [
+    {
+      "fiscal_year_end": "2021-12-31",
+      "values": {
+        "revenue": 121649000000,
+        "net_income": 48334000000,
+        "operating_cash_flow": 78084000000,
+        "capital_spending": null,
+        "equity": 294127000000,
+        "roe_percent": 16.433037429409744,
+        "owner_earnings": null
+      },
+      "sources": {
+        "revenue": {
+          "tag": "us-gaap:Revenues",
+          "start": "2021-01-01",
+          "end": "2021-12-31",
+          "filed": "2024-02-16",
+          "accn": "0000019617-24-000225",
+          "form": "10-K"
+        },
+        "net_income": {
+          "tag": "us-gaap:NetIncomeLoss",
+          "start": "2021-01-01",
+          "end": "2021-12-31",
+          "filed": "2024-02-16",
+          "accn": "0000019617-24-000225",
+          "form": "10-K"
+        },
+        "operating_cash_flow": {
+          "tag": "us-gaap:NetCashProvidedByUsedInOperatingActivities",
+          "start": "2021-01-01",
+          "end": "2021-12-31",
+          "filed": "2024-02-16",
+          "accn": "0000019617-24-000225",
+          "form": "10-K"
+        },
+        "capital_spending": {
+          "tag": "not found",
+          "attempted_tags": [
+            "PaymentsToAcquirePropertyPlantAndEquipment",
+            "PaymentsToAcquireProductiveAssets"
+          ]
+        },
+        "equity": {
+          "tag": "us-gaap:StockholdersEquity",
+          "start": null,
+          "end": "2021-12-31",
+          "filed": "2024-02-16",
+          "accn": "0000019617-24-000225",
+          "form": "10-K"
+        },
+        "roe_percent": {
+          "tag": "derived: NetIncomeLoss / StockholdersEquity * 100"
+        },
+        "owner_earnings": {
+          "tag": "derived: us-gaap:NetCashProvidedByUsedInOperatingActivities - not found"
+        }
+      }
+    },
+    {
+      "fiscal_year_end": "2022-12-31",
+      "values": {
+        "revenue": 128695000000,
+        "net_income": 37676000000,
+        "operating_cash_flow": 107119000000,
+        "capital_spending": null,
+        "equity": 292332000000,
+        "roe_percent": 12.888086148625536,
+        "owner_earnings": null
+      },
+      "sources": {
+        "revenue": {
+          "tag": "us-gaap:Revenues",
+          "start": "2022-01-01",
+          "end": "2022-12-31",
+          "filed": "2025-02-14",
+          "accn": "0000019617-25-000270",
+          "form": "10-K"
+        },
+        "net_income": {
+          "tag": "us-gaap:NetIncomeLoss",
+          "start": "2022-01-01",
+          "end": "2022-12-31",
+          "filed": "2025-02-14",
+          "accn": "0000019617-25-000270",
+          "form": "10-K"
+        },
+        "operating_cash_flow": {
+          "tag": "us-gaap:NetCashProvidedByUsedInOperatingActivities",
+          "start": "2022-01-01",
+          "end": "2022-12-31",
+          "filed": "2025-02-14",
+          "accn": "0000019617-25-000270",
+          "form": "10-K"
+        },
+        "capital_spending": {
+          "tag": "not found",
+          "attempted_tags": [
+            "PaymentsToAcquirePropertyPlantAndEquipment",
+            "PaymentsToAcquireProductiveAssets"
+          ]
+        },
+        "equity": {
+          "tag": "us-gaap:StockholdersEquity",
+          "start": null,
+          "end": "2022-12-31",
+          "filed": "2025-02-14",
+          "accn": "0000019617-25-000270",
+          "form": "10-K"
+        },
+        "roe_percent": {
+          "tag": "derived: NetIncomeLoss / StockholdersEquity * 100"
+        },
+        "owner_earnings": {
+          "tag": "derived: us-gaap:NetCashProvidedByUsedInOperatingActivities - not found"
+        }
+      }
+    },
+    {
+      "fiscal_year_end": "2023-12-31",
+      "values": {
+        "revenue": 158104000000,
+        "net_income": 49552000000,
+        "operating_cash_flow": 12974000000,
+        "capital_spending": null,
+        "equity": 327878000000,
+        "roe_percent": 15.112938349020064,
+        "owner_earnings": null
+      },
+      "sources": {
+        "revenue": {
+          "tag": "us-gaap:Revenues",
+          "start": "2023-01-01",
+          "end": "2023-12-31",
+          "filed": "2026-02-13",
+          "accn": "0001628280-26-008131",
+          "form": "10-K"
+        },
+        "net_income": {
+          "tag": "us-gaap:NetIncomeLoss",
+          "start": "2023-01-01",
+          "end": "2023-12-31",
+          "filed": "2026-02-13",
+          "accn": "0001628280-26-008131",
+          "form": "10-K"
+        },
+        "operating_cash_flow": {
+          "tag": "us-gaap:NetCashProvidedByUsedInOperatingActivities",
+          "start": "2023-01-01",
+          "end": "2023-12-31",
+          "filed": "2026-02-13",
+          "accn": "0001628280-26-008131",
+          "form": "10-K"
+        },
+        "capital_spending": {
+          "tag": "not found",
+          "attempted_tags": [
+            "PaymentsToAcquirePropertyPlantAndEquipment",
+            "PaymentsToAcquireProductiveAssets"
+          ]
+        },
+        "equity": {
+          "tag": "us-gaap:StockholdersEquity",
+          "start": null,
+          "end": "2023-12-31",
+          "filed": "2026-02-13",
+          "accn": "0001628280-26-008131",
+          "form": "10-K"
+        },
+        "roe_percent": {
+          "tag": "derived: NetIncomeLoss / StockholdersEquity * 100"
+        },
+        "owner_earnings": {
+          "tag": "derived: us-gaap:NetCashProvidedByUsedInOperatingActivities - not found"
+        }
+      }
+    },
+    {
+      "fiscal_year_end": "2024-12-31",
+      "values": {
+        "revenue": 177556000000,
+        "net_income": 58471000000,
+        "operating_cash_flow": -42012000000,
+        "capital_spending": null,
+        "equity": 344758000000,
+        "roe_percent": 16.96001253052866,
+        "owner_earnings": null
+      },
+      "sources": {
+        "revenue": {
+          "tag": "us-gaap:Revenues",
+          "start": "2024-01-01",
+          "end": "2024-12-31",
+          "filed": "2026-02-13",
+          "accn": "0001628280-26-008131",
+          "form": "10-K"
+        },
+        "net_income": {
+          "tag": "us-gaap:NetIncomeLoss",
+          "start": "2024-01-01",
+          "end": "2024-12-31",
+          "filed": "2026-02-13",
+          "accn": "0001628280-26-008131",
+          "form": "10-K"
+        },
+        "operating_cash_flow": {
+          "tag": "us-gaap:NetCashProvidedByUsedInOperatingActivities",
+          "start": "2024-01-01",
+          "end": "2024-12-31",
+          "filed": "2026-02-13",
+          "accn": "0001628280-26-008131",
+          "form": "10-K"
+        },
+        "capital_spending": {
+          "tag": "not found",
+          "attempted_tags": [
+            "PaymentsToAcquirePropertyPlantAndEquipment",
+            "PaymentsToAcquireProductiveAssets"
+          ]
+        },
+        "equity": {
+          "tag": "us-gaap:StockholdersEquity",
+          "start": null,
+          "end": "2024-12-31",
+          "filed": "2026-02-13",
+          "accn": "0001628280-26-008131",
+          "form": "10-K"
+        },
+        "roe_percent": {
+          "tag": "derived: NetIncomeLoss / StockholdersEquity * 100"
+        },
+        "owner_earnings": {
+          "tag": "derived: us-gaap:NetCashProvidedByUsedInOperatingActivities - not found"
+        }
+      }
+    },
+    {
+      "fiscal_year_end": "2025-12-31",
+      "values": {
+        "revenue": 182447000000,
+        "net_income": 57048000000,
+        "operating_cash_flow": -147782000000,
+        "capital_spending": null,
+        "equity": 362438000000,
+        "roe_percent": 15.74007140531622,
+        "owner_earnings": null
+      },
+      "sources": {
+        "revenue": {
+          "tag": "us-gaap:Revenues",
+          "start": "2025-01-01",
+          "end": "2025-12-31",
+          "filed": "2026-02-13",
+          "accn": "0001628280-26-008131",
+          "form": "10-K"
+        },
+        "net_income": {
+          "tag": "us-gaap:NetIncomeLoss",
+          "start": "2025-01-01",
+          "end": "2025-12-31",
+          "filed": "2026-02-13",
+          "accn": "0001628280-26-008131",
+          "form": "10-K"
+        },
+        "operating_cash_flow": {
+          "tag": "us-gaap:NetCashProvidedByUsedInOperatingActivities",
+          "start": "2025-01-01",
+          "end": "2025-12-31",
+          "filed": "2026-02-13",
+          "accn": "0001628280-26-008131",
+          "form": "10-K"
+        },
+        "capital_spending": {
+          "tag": "not found",
+          "attempted_tags": [
+            "PaymentsToAcquirePropertyPlantAndEquipment",
+            "PaymentsToAcquireProductiveAssets"
+          ]
+        },
+        "equity": {
+          "tag": "us-gaap:StockholdersEquity",
+          "start": null,
+          "end": "2025-12-31",
+          "filed": "2026-02-13",
+          "accn": "0001628280-26-008131",
+          "form": "10-K"
+        },
+        "roe_percent": {
+          "tag": "derived: NetIncomeLoss / StockholdersEquity * 100"
+        },
+        "owner_earnings": {
+          "tag": "derived: us-gaap:NetCashProvidedByUsedInOperatingActivities - not found"
+        }
+      }
+    }
+  ],
+  "checks": {
+    "ROE >= 15% every year": "fail",
+    "Owner earnings positive every year": "not known",
+    "Owner earnings grew first to last": "not known"
+  }
+}
