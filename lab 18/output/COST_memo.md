@@ -6,4 +6,6 @@ I like the earning power this record suggests. From 2022-08-28 to 2026-08-30, ne
 
 I would watch it before committing to own the business. These accounts support a profitable, cash-generating record, but they cannot establish a lasting competitive advantage or management's stewardship. I want evidence that the economics can endure. The lab's owner earnings subtracts total capital spending; it does not isolate maintenance spending. This is a judgment about business evidence, with no conclusion about the stock's price.
 
+Evidence that its competitive advantages withstand pressure and that management reinvests cash sensibly would strengthen my willingness to own the business. A sustained weakening of earning power would weaken it. Those questions remain unresolved by this report.
+
 **Your decision:** Add your own trust decision below this memo in the app after reviewing the live report.

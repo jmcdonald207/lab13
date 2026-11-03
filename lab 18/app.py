@@ -41,10 +41,13 @@ if not frame.empty:
 else:
     st.warning('No qualifying annual periods found.')
 st.table(pd.DataFrame(report['checks'].items(), columns=['Check', 'Result']))
+st.caption('Owner earnings here means operating cash flow minus total capital spending. Passing the checks is evidence for review; it does not establish a durable competitive advantage.')
 with st.expander('XBRL tags and filing provenance'):
     st.json([{'fiscal_year_end': r['fiscal_year_end'], 'sources': r['sources']} for r in report['rows']])
 st.download_button('Download printed report', edgar.render(report), file_name=f'{ticker}_report.txt')
 st.subheader('Business-quality memo')
+with st.expander('How the Buffett-inspired judgment works'):
+    st.markdown('The memo weighs the printed financial record, identifies what remains unknown about the business and its competitive advantage or management, and explains what evidence would change the verdict. It judges business quality without price targets or forecasts. The financial checks are calculated by Python; the verdict is the model’s judgment.')
 memo_path = OUT / f'{ticker}_memo.md'
 saved = memo_path.read_text(encoding='utf-8') if memo_path.exists() else ''
 memo_version = edgar.hashlib.sha256(saved.encode()).hexdigest()

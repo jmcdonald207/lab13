@@ -12,3 +12,5 @@ Subsequent normal PowerShell downloads succeeded. The saved live reports were in
 Synthetic fixture tests are labelled and isolated from runtime output. They demonstrate computation and missing-input behavior separately from the live verifier. The student's personal trust decision and fresh-chat comparison remain for the student to complete.
 
 Streamlit was restarted successfully with `--server.address 127.0.0.1 --server.port 8519`; its startup log reported http://127.0.0.1:8519. Connection-refused troubleshooting and the requirement to keep the server process running are documented in README.md. The verified derived reports are now included in GitHub; raw SEC response caches and personal decision files are excluded.
+
+The FAskills reference review added explicit evidence/unknowns/change-of-mind guidance to the skill and memos, and explained the cash-flow proxy and judgment framework in the app. Financial extraction and arithmetic were unchanged. Both memo number audits, the live verifier, and the eight existing tests were rerun successfully after these changes.
