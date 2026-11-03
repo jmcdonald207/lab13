@@ -15,6 +15,8 @@ if not edgar.re.fullmatch(r'[A-Z0-9.-]{1,15}', ticker):
     st.error('Enter a valid ticker.')
     st.stop()
 agent = st.text_input('SEC User-Agent: name and email', os.environ.get('SEC_USER_AGENT', edgar.DEFAULT_AGENT))
+if st.button('Reload saved reports — no internet needed'):
+    st.rerun()
 if st.button('Download SEC facts', type='primary'):
     try:
         with st.spinner('Reading SEC annual filings…'):
@@ -22,6 +24,7 @@ if st.button('Download SEC facts', type='primary'):
             edgar.save(report, facts, OUT)
     except Exception as exc:
         st.error(f'SEC download failed: {exc}')
+        st.info('If PowerShell downloads worked, use Reload saved reports. This app process may have different network permissions. To enable downloads here, stop it and launch python -m streamlit run app.py from your normal PowerShell window.')
 path = OUT / f'{ticker}.json'
 if not path.exists():
     st.info('Download SEC facts to begin. No estimated values are prefilled.')
@@ -44,7 +47,8 @@ st.download_button('Download printed report', edgar.render(report), file_name=f'
 st.subheader('Business-quality memo')
 memo_path = OUT / f'{ticker}_memo.md'
 saved = memo_path.read_text(encoding='utf-8') if memo_path.exists() else ''
-memo = st.text_area('Memo editor — try adding 40.0% to test the audit', saved, height=240, key=f'memo_{ticker}_{edgar.fingerprint(report)}')
+memo_version = edgar.hashlib.sha256(saved.encode()).hexdigest()
+memo = st.text_area('Memo editor — try adding 40.0% to test the audit', saved, height=240, key=f'memo_{ticker}_{edgar.fingerprint(report)}_{memo_version}')
 if memo:
     st.markdown(memo)
     flags = edgar.audit(memo, report)

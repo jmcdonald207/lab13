@@ -7,4 +7,6 @@ Executed in the managed Windows workspace on 2026-11-03:
 - SEC companyfacts retrieval through the web tool: unavailable for both company URLs.
 - Bundled skill validator: unavailable because its optional `yaml` dependency is absent. Frontmatter and naming inspected directly instead.
 
-Synthetic fixture tests are labelled and isolated from runtime output. They demonstrate computation and missing-input behavior, not agreement with current EDGAR filings. `verify_live.py` is the separate live acceptance check. Final company memos and the student's personal decision remain pending live evidence and student review.
+Subsequent normal PowerShell downloads succeeded. The saved live reports were inspected, and `python verify_live.py` printed **All live COST and JPM classroom checks match.** COST and JPM memos were rewritten from the printed reports; both audit runs returned empty unsupported-number lists and bound their report hashes. All eight tests passed again after adding saved-report reload and memo refresh handling.
+
+Synthetic fixture tests are labelled and isolated from runtime output. They demonstrate computation and missing-input behavior separately from the live verifier. The student's personal trust decision and fresh-chat comparison remain for the student to complete.

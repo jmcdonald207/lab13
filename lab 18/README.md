@@ -31,7 +31,7 @@ python edgar.py --audit output/COST_memo.md --report output/COST.json --bind-mem
 python edgar.py --audit output/JPM_memo.md --report output/JPM.json --bind-memo
 ```
 
-The included memos are explicitly **pending live data**. They contain no invented financial numbers. They must be rewritten after downloading the reports. A hash detects reports changed after review. The numeric audit accepts equivalent comma/decimal formatting, checks every occurrence, and lists unprinted numeric tokens. It cannot prove correct meaning or units; a printed number could still be misused in a sentence.
+The included memos were written from the saved live reports after successful PowerShell downloads. Both pass the numeric audit. A hash detects reports changed after review. The numeric audit accepts equivalent comma/decimal formatting, checks every occurrence, and lists unprinted numeric tokens. It cannot prove correct meaning or units; a printed number could still be misused in a sentence.
 
 ## Proof and classroom activities
 
@@ -45,7 +45,7 @@ At minute twenty, open Brightspace → Quizzes → Lab 18 yourself. Add your own
 
 ## Verification status in this session
 
-The script's live SEC download was attempted and blocked by the managed environment's outbound socket policy (WinError 10013). The web tool could not retrieve companyfacts either. Therefore live COST/JPM values, exact handout agreement, the completed company memos, and the expected chart trends remain unverified. Do not submit the synthetic tests as live proof. Run the commands above on a network-enabled machine, then ask Codex to write the final memos from the printed reports.
+The managed agent process initially could not download SEC data (WinError 10013). Running the script in normal Windows PowerShell succeeded. Saved COST and JPM reports now pass `verify_live.py`; company memos were written from their printed reports and audited successfully. All eight tests still pass. If the app's download button encounters the managed-process restriction, click **Reload saved reports — no internet needed**, or restart Streamlit from normal PowerShell. The student's own decision and fresh-chat comparison remain classroom activities to complete.
 
 ## Sources and scope
 
