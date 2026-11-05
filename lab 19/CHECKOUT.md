@@ -12,6 +12,10 @@ Final selected fund: FNCL; largest holding: JPM, per Fidelity's August 31, 2026 
 | Burry | Cash flow at least income every year | fail |
 | Burry | Latest liabilities at most twice equity | fail: 11.21 |
 
+R&D availability: the saved SEC observations contain no `ResearchAndDevelopmentExpense` value for COST in FY2022, FY2023, FY2024, FY2025, or FY2026, or for JPM in FY2021, FY2022, FY2023, FY2024, or FY2025. R&D expense therefore remains **not found** in every year for both companies; R&D/revenue and Cathie Wood's latest-year R&D check remain **not known**. This is a confirmed gap in the permitted source data, not evidence of zero R&D spending. R&D is an expense, not earnings.
+
+JPM owner-earnings availability: the permitted capital-spending tags are not found in any of its five annual rows, so owner earnings cannot be computed for any year. Whether owner earnings were positive every year or grew from the first to the latest year remains **not known**.
+
 AI-simulation verdicts: Buffett watch it; Wood pass for screen fit; Burry pass pending deeper review. Each full memo is in `output`, with printed financial evidence, unresolved questions, and evidence that could change the judgment. None recommends an actual transaction.
 
 Bull case, two sentences: JPM's printed revenue rose from 121,649 to 182,447 in USD millions, and latest ROE of 15.7% clears the annual hurdle for that year. The missing capital-spending and R&D tags leave questions unresolved rather than proving that the underlying business is weak.
