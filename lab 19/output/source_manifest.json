@@ -1,0 +1,16 @@
+{
+  "COST": {
+    "source": "lab 18\\output\\COST_companyfacts.json",
+    "source_sha256": "a27204836118704dce065d14562b01ed37c09fcdd14a547677306c272d70d4b7",
+    "subset_sha256": "e313c08561c2d3e3cf3dd07d62e052ec4aa282ae9711527aa15acf0213c28d9b",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000909832.json",
+    "note": "Existing Lab 18 SEC cache, not a fresh network download. Unmodified observations for permitted tags and selected fiscal ends; full-cache and subset reports compared equal."
+  },
+  "JPM": {
+    "source": "lab 18\\output\\JPM_companyfacts.json",
+    "source_sha256": "7c0130fc7483d6ee9d23a8664f130787adca291b1c0dbff951e898fbccc26726",
+    "subset_sha256": "73b21c36cb54c0c6ec5bc78a33afe13c06b4f3a97b6ec009e139af3fed167d3b",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000019617.json",
+    "note": "Existing Lab 18 SEC cache, not a fresh network download. Unmodified observations for permitted tags and selected fiscal ends; full-cache and subset reports compared equal."
+  }
+}

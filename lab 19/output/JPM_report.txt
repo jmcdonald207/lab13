@@ -1,0 +1,69 @@
+JPM | JPMORGAN CHASE & CO
+SEC EDGAR annual 10-K facts. Amounts USD millions; ROE and R&D percent; liabilities/equity multiple.
+2021-12-31 | revenue | 121,649 (USD 121,649,000,000) | us-gaap:Revenues
+2021-12-31 | net_income | 48,334 (USD 48,334,000,000) | us-gaap:NetIncomeLoss
+2021-12-31 | operating_cash_flow | 78,084 (USD 78,084,000,000) | us-gaap:NetCashProvidedByUsedInOperatingActivities
+2021-12-31 | capital_spending | not found | not found
+2021-12-31 | equity | 294,127 (USD 294,127,000,000) | us-gaap:StockholdersEquity
+2021-12-31 | liabilities | 3,449,440 (USD 3,449,440,000,000) | us-gaap:Liabilities
+2021-12-31 | research_and_development | not found | not found
+2021-12-31 | roe_percent | 16.4 | derived: NetIncomeLoss / StockholdersEquity * 100
+2021-12-31 | owner_earnings | not found | derived: us-gaap:NetCashProvidedByUsedInOperatingActivities - not found
+2021-12-31 | rd_percent | not known | derived: ResearchAndDevelopmentExpense / revenue * 100
+2021-12-31 | liabilities_equity | 11.73 | derived: Liabilities / StockholdersEquity
+2022-12-31 | revenue | 128,695 (USD 128,695,000,000) | us-gaap:Revenues
+2022-12-31 | net_income | 37,676 (USD 37,676,000,000) | us-gaap:NetIncomeLoss
+2022-12-31 | operating_cash_flow | 107,119 (USD 107,119,000,000) | us-gaap:NetCashProvidedByUsedInOperatingActivities
+2022-12-31 | capital_spending | not found | not found
+2022-12-31 | equity | 292,332 (USD 292,332,000,000) | us-gaap:StockholdersEquity
+2022-12-31 | liabilities | 3,373,411 (USD 3,373,411,000,000) | us-gaap:Liabilities
+2022-12-31 | research_and_development | not found | not found
+2022-12-31 | roe_percent | 12.9 | derived: NetIncomeLoss / StockholdersEquity * 100
+2022-12-31 | owner_earnings | not found | derived: us-gaap:NetCashProvidedByUsedInOperatingActivities - not found
+2022-12-31 | rd_percent | not known | derived: ResearchAndDevelopmentExpense / revenue * 100
+2022-12-31 | liabilities_equity | 11.54 | derived: Liabilities / StockholdersEquity
+2023-12-31 | revenue | 158,104 (USD 158,104,000,000) | us-gaap:Revenues
+2023-12-31 | net_income | 49,552 (USD 49,552,000,000) | us-gaap:NetIncomeLoss
+2023-12-31 | operating_cash_flow | 12,974 (USD 12,974,000,000) | us-gaap:NetCashProvidedByUsedInOperatingActivities
+2023-12-31 | capital_spending | not found | not found
+2023-12-31 | equity | 327,878 (USD 327,878,000,000) | us-gaap:StockholdersEquity
+2023-12-31 | liabilities | 3,547,515 (USD 3,547,515,000,000) | us-gaap:Liabilities
+2023-12-31 | research_and_development | not found | not found
+2023-12-31 | roe_percent | 15.1 | derived: NetIncomeLoss / StockholdersEquity * 100
+2023-12-31 | owner_earnings | not found | derived: us-gaap:NetCashProvidedByUsedInOperatingActivities - not found
+2023-12-31 | rd_percent | not known | derived: ResearchAndDevelopmentExpense / revenue * 100
+2023-12-31 | liabilities_equity | 10.82 | derived: Liabilities / StockholdersEquity
+2024-12-31 | revenue | 177,556 (USD 177,556,000,000) | us-gaap:Revenues
+2024-12-31 | net_income | 58,471 (USD 58,471,000,000) | us-gaap:NetIncomeLoss
+2024-12-31 | operating_cash_flow | -42,012 (USD -42,012,000,000) | us-gaap:NetCashProvidedByUsedInOperatingActivities
+2024-12-31 | capital_spending | not found | not found
+2024-12-31 | equity | 344,758 (USD 344,758,000,000) | us-gaap:StockholdersEquity
+2024-12-31 | liabilities | 3,658,056 (USD 3,658,056,000,000) | us-gaap:Liabilities
+2024-12-31 | research_and_development | not found | not found
+2024-12-31 | roe_percent | 17.0 | derived: NetIncomeLoss / StockholdersEquity * 100
+2024-12-31 | owner_earnings | not found | derived: us-gaap:NetCashProvidedByUsedInOperatingActivities - not found
+2024-12-31 | rd_percent | not known | derived: ResearchAndDevelopmentExpense / revenue * 100
+2024-12-31 | liabilities_equity | 10.61 | derived: Liabilities / StockholdersEquity
+2025-12-31 | revenue | 182,447 (USD 182,447,000,000) | us-gaap:Revenues
+2025-12-31 | net_income | 57,048 (USD 57,048,000,000) | us-gaap:NetIncomeLoss
+2025-12-31 | operating_cash_flow | -147,782 (USD -147,782,000,000) | us-gaap:NetCashProvidedByUsedInOperatingActivities
+2025-12-31 | capital_spending | not found | not found
+2025-12-31 | equity | 362,438 (USD 362,438,000,000) | us-gaap:StockholdersEquity
+2025-12-31 | liabilities | 4,062,462 (USD 4,062,462,000,000) | us-gaap:Liabilities
+2025-12-31 | research_and_development | not found | not found
+2025-12-31 | roe_percent | 15.7 | derived: NetIncomeLoss / StockholdersEquity * 100
+2025-12-31 | owner_earnings | not found | derived: us-gaap:NetCashProvidedByUsedInOperatingActivities - not found
+2025-12-31 | rd_percent | not known | derived: ResearchAndDevelopmentExpense / revenue * 100
+2025-12-31 | liabilities_equity | 11.21 | derived: Liabilities / StockholdersEquity
+Revenue growth a year = (last / first)^(1/4) - 1: 10.66%
+Cathie Wood growth threshold kept: 15%
+Buffett | ROE >= 15% every year | fail
+Buffett | Owner earnings positive every year | not known
+Buffett | Owner earnings grew first to last | not known
+Buffett: 0 of 3 pass
+Cathie Wood | Revenue growth >= 15% a year, first to last | fail
+Cathie Wood | R&D >= 5% of revenue, latest year | not known
+Cathie Wood: 0 of 2 pass
+Burry | Operating cash flow >= net income every year | fail
+Burry | Liabilities <= twice equity, latest year | fail
+Burry: 0 of 2 pass
