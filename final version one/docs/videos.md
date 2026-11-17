@@ -2,9 +2,9 @@
 
 | Item | Video link | Transcript | Verification |
 |---|---|---|---|
-| Video 1 | Pending | Pending | Pending |
-| Video 2 | Pending | Pending | Pending |
-| Video 3 | Pending | Pending | Pending |
+| Video 1 | Pending | [Draft recording script](../transcripts/video-1-how-it-changed.md) | Pending recording |
+| Video 2 | Pending | [Draft recording script](../transcripts/video-2-technical-walkthrough.md) | Pending recording |
+| Video 3 | Pending | [Draft recording script](../transcripts/video-3-committee-presentation.md) | Pending recording |
 
 Open each recording with the AI announcement and the exact words **“education, not investment advice.”** Add the recording and an actual transcript after recording, then verify viewer access.
 
