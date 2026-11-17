@@ -14,7 +14,7 @@ Committee decision: After reviewing all of this, I believe that continuing the r
 ## Pre-run record to complete with AI closed
 
 Use the full estimation window and keep all other inputs fixed.
-- Baseline VT expected annual return: ___% (specify the default estimate or an exact 10.50% override).
+- Baseline VT expected annual return: default full-window estimate, displayed as 10.55%. The baseline command `python run.py` uses the unrounded estimate.
 - Changed VT expected annual return: 6.50% (exact override).
 - Previous stress for reference: 9.55%. The new override is 3.05 percentage points lower.
 - The five-percentage-point search increment applies to portfolio weights.
@@ -29,3 +29,14 @@ Write one expected direction for each item. Use this list to resolve the conflic
 - Expected effect on the research pilot and the result that would make me pause it: ___
 
 Commit and push the completed prediction before running the test. If the result is already known, select a fresh change for the pre-run record.
+
+## Observed baseline from the saved full-window run
+
+[Saved baseline output](output/results.md) uses 60 monthly returns. The selected allocation was 55% SGOV and 45% VT, with 6.74% modeled annual volatility.
+
+| Modeled rule | Saved baseline result | Verdict |
+|---|---:|---|
+| Expected annual return at least 6.50% | 6.83% | PASS |
+| Eligible reserve weight at least 3.00% | 55.00% under the SGOV eligibility assumption | PASS |
+
+These are observed baseline checks. The 6.50% override was not run for this update.
