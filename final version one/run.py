@@ -3,9 +3,13 @@ import argparse
 from math import sqrt
 from statistics import correlation, mean, stdev
 
-from portfolio import search_portfolio
+if __package__:
+    from .portfolio import search_portfolio
+    from .prices import TICKERS, load_prices
+else:
+    from portfolio import search_portfolio
+    from prices import TICKERS, load_prices
 
-from prices import TICKERS, load_prices
 OBJECTIVE = 0.065
 RESERVE_MINIMUM = 0.03
 RESERVE_ELIGIBLE = (True, False, False, False)
