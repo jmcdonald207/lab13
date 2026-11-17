@@ -6,4 +6,7 @@ Expected Returns and Volatility: I predict a slight decrease towards 6.5%
 
 Reserve weight and mandate verdict: I want higher volatility if VT increases, if VT does not change, then changing only the return estimates ends with no change in volatility.
 
+The Test: lower VT's expected annual return from 10.5% to 6.5% because 6.5% is exactly 3% lower than the initial 9.5% stress test.
+
+Prediction: The test will pass with a lower VT and a higher expected annual return.
 Committee decision: After reviewing all of this, I believe that continuing the research pilot would be beneficial if the new adjustment make the changes mentioned above. Otherwise I would no longer continue the research pilot
