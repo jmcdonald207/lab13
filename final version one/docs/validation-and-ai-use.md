@@ -28,6 +28,17 @@ Run `python validate_project.py` from the Project 2 folder. Each scenario change
 
 The illustrative cost stress uses a uniform drag across all sleeves. Excluding SGOV leaves every candidate below the reserve minimum, so pause the pilot if the committee rules SGOV ineligible and no substitute is approved. The earlier sample end tests sensitivity to the observation cutoff using current adjusted closes. A verified historical point-in-time signal still requires vintage evidence.
 
+## Independent known-answer and failure checks
+
+Run `python -m unittest -v test_validation` from the Project 2 folder. Codex ran all four checks and all four passed. The fixtures use synthetic inputs with hand-computable answers. [Test source](../test_validation.py)
+
+| Check | Independently derived expectation |
+|---|---|
+| Return hurdle boundary | 50% VT is the lowest-volatility qualifying grid mix. The weighted return is 6.50%, and the zero-correlation volatility is about 8.02%. |
+| Cost drag | A 0.50% annual drag makes 60% VT the first grid weight that clears the net return hurdle. |
+| Reserve failure | With no eligible assets, the optimizer returns no qualifying mix and the report prints FAIL. |
+| Date cutoff | Holding back a synthetic 100% final monthly jump changes the annualized arithmetic estimate from 440% to 60%. This validates cutoff exclusion in the code. Historical vintage verification remains open. |
+
 ## Locked Changed-Input Record
 
 | Field | Status |
