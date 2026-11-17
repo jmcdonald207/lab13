@@ -1,17 +1,17 @@
-# Synthetic Project 2 results
+# Real adjusted-close portfolio results
 
-Run November 17, 2026. Price dates January 2021 to January 2026 are simulated.
+Downloaded and run November 17, 2026. Fixed sample October 2021 through October 2026. The recent return window uses the final 36 monthly returns.
 
-| Measure | All 60 returns | Last 36 returns | All 60 with VT stressed |
-|---|---:|---:|---:|
-| VT annual return input | 8.00% | 7.00% | 7.00% |
-| SGOV | 5.00% | 5.00% | 5.00% |
-| IEF | 10.00% | 0.00% | 0.00% |
-| BND | 30.00% | 15.00% | 15.00% |
-| VT | 55.00% | 80.00% | 80.00% |
-| Expected annual return | 6.51% | 6.52% | 6.53% |
-| Annual volatility | 7.60% | 10.95% | 10.89% |
-| Eligible reserves | 5.00% | 5.00% | 5.00% |
-| Modeled mandate verdict | PASS | PASS | PASS |
+| Measure | Full 60 | Recent 36 | Full 60 at 9.55% VT | Recent 36 at 9.55% VT |
+|---|---:|---:|---:|---:|
+| VT annual return input | 10.55% | 20.69% | 9.55% | 9.55% |
+| SGOV | 55% | 85% | 50% | 55% |
+| IEF | 0% | 0% | 0% | 0% |
+| BND | 0% | 0% | 0% | 5% |
+| VT | 45% | 15% | 50% | 40% |
+| Expected annual return | 6.83% | 6.85% | 6.67% | 6.52% |
+| Annual volatility | 6.74% | 1.77% | 7.48% | 4.80% |
+| Eligible reserve | 55% | 85% | 50% | 55% |
+| Modeled verdict | PASS | PASS | PASS | PASS |
 
-Baseline command is `python run.py`. Stress command is `python run.py --equity-return 7`. The recent window already estimates 7.00% for VT and reproduces the recent-window verdict under the override.
+Run `python run.py` for the baseline and `python run.py --equity-return 9.55` for the AI-assisted stress replay. [Data source and definitions](../data/sources.md)

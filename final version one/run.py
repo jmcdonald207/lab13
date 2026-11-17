@@ -1,22 +1,18 @@
-"""Compare allocations using the bundled synthetic monthly prices."""
+"""Compare allocations using the real adjusted-close prices."""
 import argparse
-import csv
 from math import sqrt
-from pathlib import Path
 from statistics import correlation, mean, stdev
 
 from portfolio import search_portfolio
 
-PRICE_FILE = Path(__file__).with_name("data") / "prices.csv"
+from prices import TICKERS, load_prices
 OBJECTIVE = 0.065
 RESERVE_MINIMUM = 0.03
 RESERVE_ELIGIBLE = (True, False, False, False)
 
 
 def evaluate(months=None, equity_return=None):
-    with PRICE_FILE.open(newline="", encoding="utf-8") as source:
-        _, *rows = (row for row in csv.reader(source) if row)
-    prices = list(zip(*(tuple(map(float, row[1:])) for row in rows)))
+    prices = load_prices()
     returns = [[end / start - 1 for start, end in zip(series, series[1:])]
                for series in prices]
     if months is not None:
@@ -24,7 +20,7 @@ def evaluate(months=None, equity_return=None):
     sleeves = [
         dict(name=ticker, expected_return=12 * mean(series),
              volatility=sqrt(12) * stdev(series))
-        for ticker, series in zip(("SGOV", "IEF", "BND", "VT"), returns)
+        for ticker, series in zip(TICKERS, returns)
     ]
     if equity_return is not None:
         sleeves[-1]["expected_return"] = equity_return / 100
@@ -53,10 +49,13 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--equity-return", type=float, help="Override VT annual return in percent")
     args = parser.parse_args()
-    print("Synthetic prices | Jan 2021 to Jan 2026")
+    print("Yahoo Finance adjusted closes | Oct 2021 to Oct 2026")
     for title, months in (("All 60 monthly returns", None), ("Last 36 monthly returns", 36)):
         print(f"\n{title}\n{report(*evaluate(months, args.equity_return))}")
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except (OSError, ValueError, KeyError, IndexError, TypeError) as error:
+        raise SystemExit(f"Could not complete the portfolio run: {error}") from error

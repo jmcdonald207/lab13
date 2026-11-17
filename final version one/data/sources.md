@@ -1,12 +1,7 @@
-# Input provenance
+# Market data and mandate inputs
 
-The tickers are used as labels for four illustrative sleeves. Codex generated the price series on November 17, 2026. No market data was downloaded. The dates identify synthetic periods.
+Yahoo Finance adjusted daily closes in USD for [SGOV](https://finance.yahoo.com/quote/SGOV/history/), [IEF](https://finance.yahoo.com/quote/IEF/history/), [BND](https://finance.yahoo.com/quote/BND/history/) and [VT](https://finance.yahoo.com/quote/VT/history/). Retrieved November 17, 2026. The fixed sample runs October 2021 through October 2026, excluding November 2026. The downloader uses Yahoo's adjusted close field, which reflects distributions and splits, and takes the last available trading-day observation in each month. It requires 61 valid observations per fund and does not fill missing months. Source revisions and later adjustment factors can change the downloaded series. [Acquisition code](../prices.py)
 
-| Ticker | Fund | Modeled role | Reserve eligible |
-|---|---|---|---|
-| SGOV | iShares 0–3 Month Treasury Bond ETF | Short Treasury reserve proxy | Yes, classroom assumption |
-| IEF | iShares 7–10 Year Treasury Bond ETF | Intermediate Treasury exposure | No |
-| BND | Vanguard Total Bond Market ETF | Broad investment-grade bond exposure | No |
-| VT | Vanguard Total World Stock ETF | Global equity exposure | No |
+SGOV is the short Treasury reserve proxy, IEF provides intermediate Treasury exposure, BND provides broad bond exposure, and VT provides global equity exposure. The classroom mandate assumes only SGOV is reserve eligible, a 3% reserve minimum, and a 6.50% annual expected-return hurdle. Actual committee eligibility remains open.
 
-Each series starts at 100 in January 2021. For the next 60 months, the previous price is multiplied by one plus a synthetic monthly return. The return is the modeled annual drift divided by 12 plus a sine wave with phase 0.4 radians. Annual drifts are 3.5%, 4.3%, 5.0%, and 9.5% for VT's first 24 returns and 7.0% thereafter. In ticker order, wave amplitudes are 0.0015, 0.022, 0.017 and 0.055, with respective periods of 3, 4, 6 and 12 months. The file rounds prices to eight decimals.
+Yahoo Finance asks users to avoid redistributing its information. The repository contains acquisition code and derived decision results. [Yahoo Finance data notice](https://help.yahoo.com/kb/finance/article-exchanges-data-delays-sln2310.html)
