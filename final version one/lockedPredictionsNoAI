@@ -10,3 +10,22 @@ The Test: lower VT's expected annual return from 10.5% to 6.5% because 6.5% is e
 
 Prediction: The test will pass with a lower VT and a higher expected annual return.
 Committee decision: After reviewing all of this, I believe that continuing the research pilot would be beneficial if the new adjustment make the changes mentioned above. Otherwise I would no longer continue the research pilot
+
+## Pre-run record to complete with AI closed
+
+Use the full estimation window and keep all other inputs fixed.
+- Baseline VT expected annual return: ___% (specify the default estimate or an exact 10.50% override).
+- Changed VT expected annual return: 6.50% (exact override).
+- Previous stress for reference: 9.55%. The new override is 3.05 percentage points lower.
+- The five-percentage-point search increment applies to portfolio weights.
+
+Write one expected direction for each item. Use this list to resolve the conflicting directions in the draft above.
+- VT weight: ___
+- Eligible reserve weight: ___
+- Portfolio expected annual return: ___
+- Portfolio annual volatility: ___
+- Expected verdict for the 6.50% portfolio return hurdle (pass or fail): ___
+- Expected verdict for the 3.00% eligible reserve minimum (pass or fail): ___
+- Expected effect on the research pilot and the result that would make me pause it: ___
+
+Commit and push the completed prediction before running the test. If the result is already known, select a fresh change for the pre-run record.
