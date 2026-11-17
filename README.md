@@ -32,7 +32,13 @@ Download or clone this repository and open a terminal at its root. Use Python 3.
 | [Buffett Business Notebook](lab%2018/README.md) | `cd "lab 18"` | `python -m pip install -r requirements.txt` | `python -m streamlit run app.py --server.port 8518` | [Port 8518](http://127.0.0.1:8518) |
 | [Same Facts, Different Investors](lab%2019/README.md) | `cd "lab 19"` | `python -m pip install -r requirements.txt` | `python -m streamlit run app.py --server.port 8519` | [Port 8519](http://127.0.0.1:8519) |
 
-Keep each terminal running while you use its app. These ports are local to the reader's computer. Run the commands before opening the matching link.
+Keep each terminal running while you use its app. These ports are local to the reader's computer.
+
+**Open in a new browser tab.** After starting the app, right-click its link and choose **Open link in new tab**. You can also request a new tab from a separate terminal. Replace `8513` with the port in the app's row.
+
+```powershell
+python -m webbrowser -t http://127.0.0.1:8513
+```
 
 Lab 17 needs a personal `FRED_API_KEY` for live rates. Keep it in the environment or Streamlit secrets. For live SEC requests in Labs 18 and 19, enter your own contact information in the **SEC User-Agent** field. [Lab 17 setup](lab%2017/README.md) · [Lab 18 setup](lab%2018/README.md) · [Lab 19 setup](lab%2019/README.md)
 
