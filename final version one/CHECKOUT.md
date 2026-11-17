@@ -1,24 +1,15 @@
 # Lab 20 checkout
 
-## Cold run
+## Technical cold run and fix
 
-Reviewer was Codex acting as a technical partner. The first repository-only failure was the missing root README, confirmed by the GitHub contents API. Attempting a clone in this shell also failed because Git was unavailable. Codex retrieved the source through GitHub and ran the packaged files in a new temporary folder.
+Codex found the missing root README during the initial GitHub review and added the [root entry point](../README.md). The original classroom baseline ran in roughly 1.22 seconds after the files were acquired. The updated synthetic-data baseline and its stress were rerun with `python -B run.py` and `python -B run.py --equity-return 7`. [Visible output](output/results.md)
 
-- Command executed: `python -B run.py` (the flag disables bytecode files).
-- Elapsed time: about 1.22 seconds for the baseline process, excluding acquisition and setup.
-- Result: terminal output and [saved decision numbers](output/results.md).
-- Fix: a [root README](../README.md) now directs a reader to this folder's one-command baseline. Technical rerun produced the expected output. Human partner cold run and rerun are pending.
+Human partner cold run, elapsed time, rerun and code walkthrough are pending. For the walkthrough, trace `evaluate` in [run.py](run.py) and `search_portfolio` in [portfolio.py](portfolio.py).
 
-## Changed input
+## Changed-input record and reflection
 
-The previously documented stress is available for inspection. The student's new [locked prediction and rerun](docs/locked-changed-input.md) are pending.
-
-## Explain the code and reflect
-
-Use `search_portfolio` in [portfolio.py](portfolio.py), then trace how it calls `expected_return` and `portfolio_volatility`. Student walkthrough, partner question and answer, and swap are pending.
-
-The technical cold check found that the repository lacked a root entry point. The student's reflection on what the partner found and what to leave alone before the deadline is pending. The Week 12 must-fix list and the full Project 2 page were unavailable.
+The AI-assisted demo is documented in validation. The student-authored prediction, its pre-run commit, partner discussion, and reflection are pending. The official Project 2 page and Week 12 list were unavailable.
 
 ## Committee decision line
 
-Pilot the Meridian portfolio screen for research only, and reject a live allocation if the full mandate review remains unresolved or the committee finds the stressed 80% equity weight and 12.94% annual volatility unacceptable.
+Pilot the screen for research and reject a live allocation until real adjusted-close data and the applicable mandate are verified and the committee accepts the allocation's sensitivity to the equity estimate.
