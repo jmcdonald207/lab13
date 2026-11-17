@@ -14,7 +14,19 @@ The shorter window moves VT weight by 30 percentage points. The full-window esti
 
 ## AI use and verification
 
-Codex assisted with implementation and documentation, downloaded the four price series, and ran the CLI outputs recorded on November 17, 2026. Codex used the saved output to check the baseline rule verdicts. The 9.55% override was an AI-assisted stress. Independent browser and partner cold-run evidence, cost and constraint stress results, and verification of a point-in-time signal are pending. [Original validation notes](../VALIDATION.md) · [Partner checkout](../CHECKOUT.md)
+Codex assisted with implementation and documentation, downloaded the four price series, and ran the CLI outputs recorded on November 17, 2026. Codex used the saved output to check the baseline rule verdicts. The 9.55% override was an AI-assisted stress. Independent browser and partner cold-run evidence and verification of a point-in-time signal are pending. Codex added and ran the separate sensitivity replay below. [Original validation notes](../VALIDATION.md) · [Partner checkout](../CHECKOUT.md)
+
+## Cost, reserve eligibility, and sample-end sensitivity
+
+Run `python validate_project.py` from the Project 2 folder. Each scenario changes one input relative to the same baseline. [Runner](../validate_project.py) · [Executed output](../output/validation-stresses.md)
+
+| Scenario | VT weight | Expected annual return | Annual volatility | Eligible reserves | Modeled verdict |
+|---|---:|---:|---:|---:|---:|
+| Add 50 basis points of annual portfolio drag | 50% | 6.67% net | 7.48% | 50% | PASS |
+| Exclude SGOV from reserves with no eligible substitute | — | — | — | — | FAIL, no qualifying mix |
+| End the sample in April 2026, six months earlier | 40% | 6.65% | 6.24% | 60% | PASS |
+
+The illustrative cost stress uses a uniform drag across all sleeves. Excluding SGOV leaves every candidate below the reserve minimum, so pause the pilot if the committee rules SGOV ineligible and no substitute is approved. The earlier sample end tests sensitivity to the observation cutoff using current adjusted closes. A verified historical point-in-time signal still requires vintage evidence.
 
 ## Locked Changed-Input Record
 
