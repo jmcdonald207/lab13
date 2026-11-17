@@ -10,7 +10,7 @@ python run.py
 
 The tool downloads real adjusted closes for SGOV, IEF, BND and VT for a fixed October 2021–October 2026 sample, then prints the full and recent window allocations and modeled mandate verdicts. If Yahoo is unavailable or observations are missing, the run stops with an error.
 
-- [Submission manifest](MANIFEST.md)
+- [Submission table of contents and source map](MANIFEST.md)
 - [Studio must-fix list](docs/studio.md)
 - [Point-in-time data card](data/data-card.md)
 - [Input source and definitions](data/sources.md)
