@@ -15,8 +15,11 @@ RESERVE_MINIMUM = 0.03
 RESERVE_ELIGIBLE = (True, False, False, False)
 
 
-def evaluate(months=None, equity_return=None):
+def evaluate(months=None, equity_return=None, *, annual_cost=0.0,
+             reserve_eligible=RESERVE_ELIGIBLE, months_held_back=0):
     prices = load_prices()
+    if months_held_back:
+        prices = tuple(series[:-months_held_back] for series in prices)
     returns = [[end / start - 1 for start, end in zip(series, series[1:])]
                for series in prices]
     if months is not None:
@@ -30,8 +33,10 @@ def evaluate(months=None, equity_return=None):
         sleeves[-1]["expected_return"] = equity_return / 100
     correlations = [[1.0 if i == j else correlation(returns[min(i, j)], returns[max(i, j)])
                      for j in range(len(returns))] for i in range(len(returns))]
-    return sleeves, search_portfolio(sleeves, correlations, OBJECTIVE,
-                                     RESERVE_MINIMUM, RESERVE_ELIGIBLE)
+    net_sleeves = [dict(sleeve, expected_return=sleeve['expected_return'] - annual_cost)
+                   for sleeve in sleeves]
+    return sleeves, search_portfolio(net_sleeves, correlations, OBJECTIVE,
+                                     RESERVE_MINIMUM, reserve_eligible)
 
 
 def report(sleeves, result):
