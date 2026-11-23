@@ -20,6 +20,24 @@ The saved full window selected **45% VT**. The recent window selected **15% VT**
 - [Saved baseline results](final%20version%20one/output/results.md) and [sensitivity results](final%20version%20one/output/validation-stresses.md)
 - [Validation and AI use](final%20version%20one/docs/validation-and-ai-use.md) and [Lab 20 checkout](final%20version%20one/CHECKOUT.md)
 
+## Open all five websites side by side (Windows)
+
+To **run all five independent apps at once** and open them in separate Microsoft Edge windows arranged in a 3-by-2 grid, download or clone this repository, open PowerShell **at the repository root**, then run:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\open_all_side_by_side.ps1 -InstallDependencies
+```
+
+The `-InstallDependencies` switch is needed only on the first run (or after dependencies change). Later, run:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\open_all_side_by_side.ps1
+```
+
+This keeps the five websites **separate**, using their original ports (8513, 8515, 8517, 8518, 8519). The script launches each independent Streamlit server and opens five Edge app windows side by side on your primary monitor. If Edge is unavailable, it opens the URLs in the default browser; Windows Snap can then be used to arrange them. On a smaller screen, five windows will be hard to read; use a large monitor or maximize whichever window you are presenting. Edge positioning is requested but can be adjusted by the browser or Windows window manager.
+
+The five sites run **on your computer only**, not on GitHub. Keep the server processes running while using them. Lab 17 needs your personal `FRED_API_KEY` for live rates; Labs 18 and 19 require an SEC User-Agent for downloads.
+
 ## Run any of the five websites
 
 Download or clone this repository and open a terminal at its root. Use Python 3.10 or newer and an internet connection. For each website you want to open, use a fresh terminal at the repository root and follow its row.
