@@ -2,40 +2,49 @@
 
 Codex assisted with repository review, implementation, testing, and documentation. The analysis and committee decision are the project author's. **education, not investment advice**.
 
-## One website — five portfolio and finance tools
+## Project 2 — Portfolio mandate screen
 
-All five applications now run inside **one Streamlit website** with a sidebar menu. Download or clone the repository, open a terminal at the repository root, and use Python 3.10 or newer with an internet connection.
+The current app is in [final version one](final%20version%20one/README.md). From the repository root, run the following with Python 3.10 or newer and an internet connection.
 
 ```powershell
+cd "final version one"
 python -m pip install -r requirements.txt
-python -m streamlit run dashboard.py --server.port 8513
+python -m streamlit run app.py --server.address 127.0.0.1 --server.port 8513
 ```
 
-Open **[the unified dashboard at localhost:8513](http://127.0.0.1:8513)**. In the sidebar, choose which tool to view:
+Open [localhost:8513](http://127.0.0.1:8513) while Streamlit is running. Switch between full and recent estimation windows or change VT's expected return to see the modeled allocation and verdict.
 
-| Page in the one website | What it does | Supporting documentation |
-|---|---|---|
-| **Project 2 Portfolio Screen** | Portfolio mandate, full and recent windows, VT estimate control | [Project 2 README](final%20version%20one/README.md) |
-| **Meridian Portfolio Explorer** | Portfolio optimization and scenario inputs | [Lab 15 checkout](lab15/Thursday_checkout.md) |
-| **Point-in-Time Rates** | FRED/ALFRED historical-vintage comparisons | [Lab 17 README](lab%2017/README.md) |
-| **Buffett Business Notebook** | SEC financial facts and business-quality screening | [Lab 18 README](lab%2018/README.md) |
-| **Same Facts, Different Investors** | Compare investor-style screens using SEC filings | [Lab 19 README](lab%2019/README.md) |
-
-Only **one terminal and one local port** are needed. The underlying files and existing independent launch commands remain available. The site is local to your computer until deployed; localhost is **not a public website URL**.
-
-### Project 2 decision evidence
-
-The saved full-window result selected **45% VT** and the recent window selected **15% VT**. Both cleared the modeled return and reserve rules. The committee memo proposes a research pilot, deferring live allocation until SGOV reserve eligibility and allocation sensitivity are resolved.
+The saved full window selected **45% VT**. The recent window selected **15% VT**. Both cleared the modeled return and reserve rules. The committee memo proposes a research pilot and defers live allocation until the committee resolves SGOV reserve eligibility and allocation sensitivity.
 
 - [Decision memo](final%20version%20one/docs/decision-memo.md) and [submission manifest](final%20version%20one/MANIFEST.md)
-- [Saved results](final%20version%20one/output/results.md) and [sensitivity results](final%20version%20one/output/validation-stresses.md)
+- [Saved baseline results](final%20version%20one/output/results.md) and [sensitivity results](final%20version%20one/output/validation-stresses.md)
 - [Validation and AI use](final%20version%20one/docs/validation-and-ai-use.md) and [Lab 20 checkout](final%20version%20one/CHECKOUT.md)
 
-### External data and deployment
+## Run any of the five websites
 
-Point-in-Time Rates requires your own `FRED_API_KEY` in the environment or Streamlit secrets. For live SEC requests, enter your contact information in the SEC User-Agent field in Labs 18 and 19. Project 2 uses Yahoo Finance prices and requires network access. Individual pages can still display saved results or errors when providers are unavailable.
+Download or clone this repository and open a terminal at its root. Use Python 3.10 or newer and an internet connection. For each website you want to open, use a fresh terminal at the repository root and follow its row.
 
-For a **shareable public link** without requiring visitors to install Python, deploy the repository on Streamlit Community Cloud using `dashboard.py` as the entry point on branch `main`, then configure secrets as needed. A hosted URL does not exist until you deploy it and verify it works. [Deployment guide](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/deploy)
+| Website | Change to this folder | Install dependencies | Start the app | Open on your computer |
+|---|---|---|---|---|
+| [Project 2 Portfolio Screen](final%20version%20one/README.md) | `cd "final version one"` | `python -m pip install -r requirements.txt` | `python -m streamlit run app.py --server.port 8513` | [Port 8513](http://127.0.0.1:8513) |
+| [Meridian Portfolio Explorer](lab15/Thursday_checkout.md) | `cd lab15` | `python -m pip install -r requirements.txt` | `python -m streamlit run app.py --server.port 8515` | [Port 8515](http://127.0.0.1:8515) |
+| [Point-in-Time Rates](lab%2017/README.md) | `cd "lab 17"` | `python -m pip install -r requirements.txt` | `python -m streamlit run asof_app.py --server.port 8517` | [Port 8517](http://127.0.0.1:8517) |
+| [Buffett Business Notebook](lab%2018/README.md) | `cd "lab 18"` | `python -m pip install -r requirements.txt` | `python -m streamlit run app.py --server.port 8518` | [Port 8518](http://127.0.0.1:8518) |
+| [Same Facts, Different Investors](lab%2019/README.md) | `cd "lab 19"` | `python -m pip install -r requirements.txt` | `python -m streamlit run app.py --server.port 8519` | [Port 8519](http://127.0.0.1:8519) |
+
+Keep each terminal running while you use its app. These ports are local to the reader's computer.
+
+**Open in a new browser tab.** After starting the app, right-click its link and choose **Open link in new tab**. You can also request a new tab from a separate terminal. Replace `8513` with the port in the app's row.
+
+```powershell
+python -m webbrowser -t http://127.0.0.1:8513
+```
+
+Lab 17 needs a personal `FRED_API_KEY` for live rates. Keep it in the environment or Streamlit secrets. For live SEC requests in Labs 18 and 19, enter your own contact information in the **SEC User-Agent** field. [Lab 17 setup](lab%2017/README.md) · [Lab 18 setup](lab%2018/README.md) · [Lab 19 setup](lab%2019/README.md)
+
+### Share browser-only links
+
+For access without a local Python setup, deploy from branch `main` using the app's repository-relative entry point. For example, Project 2 uses `final version one/app.py` and Lab 17 uses `lab 17/asof_app.py`. After deployment, place the verified hosted URL next to the matching app. Configure the FRED key in the hosting platform's secrets. If access needs to be restricted, verify who can open the hosted site before sharing. Streamlit Community Cloud supports one private app at a time. [Deploy an app](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/deploy) · [Share an app](https://docs.streamlit.io/deploy/streamlit-community-cloud/share-your-app)
 
 ## Earlier lab work
 
